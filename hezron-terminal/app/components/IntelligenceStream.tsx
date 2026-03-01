@@ -4,14 +4,15 @@ import { motion } from 'framer-motion';
 import { timeline, type TimelineEntry } from '../data/siteData';
 
 const categoryColors: Record<string, string> = {
-    'Patch Notes': 'badge-cyan',
-    'Lore & Narrative': 'badge-purple',
-    'Esports': 'badge-magenta',
+    'Education': 'badge-purple',
+    'Certification': 'badge-cyan',
+    'Project': 'badge-green',
+    'Organization': 'badge-magenta',
 };
 
 export default function IntelligenceStream() {
     return (
-        <section id="intel" className="section">
+        <section id="timeline" className="section">
             <div className="container">
                 {/* Header */}
                 <motion.div
@@ -23,13 +24,13 @@ export default function IntelligenceStream() {
                 >
                     <div className="section-badge" style={{ margin: '0 auto 20px' }}>
                         <span className="dot" />
-                        Live Neural Link
+                        Journey So Far
                     </div>
                     <h2 className="section-title">
-                        Intelligence <span className="accent">Stream</span>
+                        My <span className="accent">Timeline</span>
                     </h2>
                     <p className="section-subtitle" style={{ margin: '0 auto' }}>
-                        System activity log. track the operational history and milestone deployments.
+                        Education, certifications, and milestones along the way.
                     </p>
                 </motion.div>
 
@@ -40,7 +41,7 @@ export default function IntelligenceStream() {
                     margin: '0 auto',
                 }}>
                     {/* Center line */}
-                    <div style={{
+                    <div className="timeline-center-line" style={{
                         position: 'absolute',
                         left: '50%',
                         top: 0,
@@ -60,17 +61,19 @@ export default function IntelligenceStream() {
             {/* Responsive override */}
             <style jsx global>{`
         @media (max-width: 768px) {
+          .timeline-center-line {
+            left: 12px !important;
+          }
           .timeline-item {
             padding-left: 40px !important;
             padding-right: 0 !important;
             text-align: left !important;
+            width: 100% !important;
+            margin-left: 0 !important;
           }
           .timeline-dot {
-            left: 0 !important;
+            left: 5px !important;
             right: auto !important;
-          }
-          .timeline-center-line {
-            left: 12px !important;
           }
         }
       `}</style>

@@ -3,8 +3,8 @@
 import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Arsenal from './components/Arsenal';
-import InfrastructureTiers from './components/InfrastructureTiers';
+import AboutSkills from './components/AboutSkills';
+import ProjectShowcase from './components/ProjectShowcase';
 import IntelligenceStream from './components/IntelligenceStream';
 import Footer from './components/Footer';
 
@@ -15,8 +15,8 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Arsenal />
-        <InfrastructureTiers />
+        <AboutSkills />
+        <ProjectShowcase />
         <IntelligenceStream />
       </main>
       <Footer />

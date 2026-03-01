@@ -1,74 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { personal, trustSignals } from '../data/siteData';
+import { personal } from '../data/siteData';
 
 export default function Footer() {
     return (
         <footer className="section" style={{ paddingBottom: '40px' }}>
             <div className="container">
-                {/* Trust signals */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                        gap: '20px',
-                        marginBottom: '80px',
-                    }}
-                >
-                    {trustSignals.map((signal, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.4 }}
-                            className="glass-card"
-                            style={{
-                                padding: '28px',
-                                display: 'flex',
-                                alignItems: 'flex-start',
-                                gap: '16px',
-                            }}
-                        >
-                            <div style={{
-                                width: '48px',
-                                height: '48px',
-                                borderRadius: '12px',
-                                background: 'var(--bg-glass)',
-                                border: '1px solid var(--border-color)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                fontSize: '22px',
-                                flexShrink: 0,
-                            }}>
-                                {signal.icon}
-                            </div>
-                            <div>
-                                <h3 style={{
-                                    fontSize: '1rem',
-                                    fontWeight: 700,
-                                    marginBottom: '4px',
-                                }}>
-                                    {signal.title}
-                                </h3>
-                                <p style={{
-                                    fontSize: '13px',
-                                    color: 'var(--text-secondary)',
-                                    lineHeight: 1.6,
-                                }}>
-                                    {signal.description}
-                                </p>
-                            </div>
-                        </motion.div>
-                    ))}
-                </motion.div>
-
                 {/* Divider */}
                 <div style={{
                     height: '1px',
@@ -112,7 +50,7 @@ export default function Footer() {
                                 fontWeight: 700,
                                 letterSpacing: '0.5px',
                             }}>
-                                HEZRON<span style={{ color: 'var(--accent-cyan)' }}>.TERMINAL</span>
+                                HEZRON<span style={{ color: 'var(--accent-cyan)' }}>.DEV</span>
                             </span>
                         </div>
                         <p style={{
@@ -121,7 +59,7 @@ export default function Footer() {
                             lineHeight: 1.6,
                             maxWidth: '280px',
                         }}>
-                            The nexus for network engineering, full-stack development, and strategic marketing solutions.
+                            Network engineer, full-stack developer, and marketing specialist based in Indonesia.
                         </p>
                     </div>
 
@@ -139,10 +77,15 @@ export default function Footer() {
                             Navigation
                         </h4>
                         <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                            {['Home', 'Arsenal', 'Infrastructure', 'Intel'].map(item => (
-                                <li key={item}>
+                            {[
+                                { label: 'Home', id: 'hero' },
+                                { label: 'About', id: 'about' },
+                                { label: 'Projects', id: 'projects' },
+                                { label: 'Timeline', id: 'timeline' },
+                            ].map(item => (
+                                <li key={item.id}>
                                     <a
-                                        href={`#${item.toLowerCase()}`}
+                                        href={`#${item.id}`}
                                         style={{
                                             fontSize: '13px',
                                             color: 'var(--text-secondary)',
@@ -151,7 +94,7 @@ export default function Footer() {
                                         onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-cyan)')}
                                         onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
                                     >
-                                        {item}
+                                        {item.label}
                                     </a>
                                 </li>
                             ))}
@@ -169,11 +112,22 @@ export default function Footer() {
                             marginBottom: '16px',
                             color: 'var(--text-primary)',
                         }}>
-                            Contact
+                            Get In Touch
                         </h4>
                         <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                            <li style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>
-                                ✉ {personal.email}
+                            <li>
+                                <a
+                                    href={`mailto:${personal.email}`}
+                                    style={{
+                                        fontSize: '13px',
+                                        color: 'var(--text-secondary)',
+                                        transition: 'color 0.2s',
+                                    }}
+                                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-cyan)')}
+                                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
+                                >
+                                    ✉ {personal.email}
+                                </a>
                             </li>
                             <li>
                                 <a
@@ -188,7 +142,7 @@ export default function Footer() {
                                     onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-cyan)')}
                                     onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
                                 >
-                                    GitHub
+                                    GitHub ↗
                                 </a>
                             </li>
                             <li>
@@ -204,13 +158,13 @@ export default function Footer() {
                                     onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-cyan)')}
                                     onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
                                 >
-                                    LinkedIn
+                                    LinkedIn ↗
                                 </a>
                             </li>
                         </ul>
                     </div>
 
-                    {/* Verified badge */}
+                    {/* Credentials */}
                     <div>
                         <h4 style={{
                             fontFamily: 'var(--font-mono)',
@@ -221,43 +175,18 @@ export default function Footer() {
                             marginBottom: '16px',
                             color: 'var(--text-primary)',
                         }}>
-                            Status
+                            Credentials
                         </h4>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '8px',
-                            marginBottom: '12px',
-                        }}>
-                            <span style={{
-                                width: '8px',
-                                height: '8px',
-                                borderRadius: '50%',
-                                background: 'var(--accent-green)',
-                                boxShadow: '0 0 8px var(--accent-green)',
-                            }} />
-                            <span style={{
-                                fontFamily: 'var(--font-mono)',
-                                fontSize: '12px',
-                                fontWeight: 700,
-                                letterSpacing: '1px',
-                                textTransform: 'uppercase',
-                            }}>
-                                Verified Secure
-                            </span>
-                        </div>
-                        {/* Language badges */}
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '12px' }}>
-                            {personal.languages.map(l => (
-                                <span key={l.lang} className="badge badge-green" style={{ fontSize: '10px' }}>
-                                    🌐 {l.lang} ({l.level})
-                                </span>
-                            ))}
-                        </div>
-                        {/* Cert badges */}
-                        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '12px' }}>
                             <span className="badge badge-cyan">MTCNA</span>
                             <span className="badge badge-purple">MTCRE</span>
+                        </div>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                            {personal.languages.map(l => (
+                                <span key={l.lang} className="badge badge-green" style={{ fontSize: '10px' }}>
+                                    🌐 {l.lang}
+                                </span>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -281,7 +210,7 @@ export default function Footer() {
                         color: 'var(--text-muted)',
                         letterSpacing: '0.5px',
                     }}>
-                        © {new Date().getFullYear()} Hezron Terminal. All rights reserved.
+                        © {new Date().getFullYear()} Yonathan Hezron. All rights reserved.
                     </p>
                     <p style={{
                         fontFamily: 'var(--font-mono)',

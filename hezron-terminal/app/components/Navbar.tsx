@@ -6,9 +6,9 @@ import { useTheme } from '../context/ThemeProvider';
 
 const navLinks = [
     { id: 'hero', label: 'Home' },
-    { id: 'arsenal', label: 'Arsenal' },
-    { id: 'infrastructure', label: 'Infrastructure' },
-    { id: 'intel', label: 'Intel' },
+    { id: 'about', label: 'About' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'timeline', label: 'Timeline' },
 ];
 
 export default function Navbar() {
@@ -92,7 +92,7 @@ export default function Navbar() {
                             letterSpacing: '1px',
                             color: 'var(--text-primary)',
                         }}>
-                            HEZRON<span style={{ color: 'var(--accent-cyan)' }}>.TERMINAL</span>
+                            HEZRON<span style={{ color: 'var(--accent-cyan)' }}>.DEV</span>
                         </span>
                     </button>
 
@@ -157,10 +157,10 @@ export default function Navbar() {
                         {/* CTA button - desktop only */}
                         <button
                             className="btn btn-primary nav-cta-desktop"
-                            onClick={() => scrollTo('arsenal')}
+                            onClick={() => scrollTo('projects')}
                             style={{ padding: '10px 20px', fontSize: '11px' }}
                         >
-                            Akses Awal →
+                            My Work →
                         </button>
 
                         {/* Hamburger - mobile only */}

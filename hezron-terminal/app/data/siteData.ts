@@ -1,14 +1,15 @@
 /* ====================================================
    Site Data — The Hezron Terminal V1.0
-   All content strings and structured data in one place.
+   Personal Portfolio Edition
    ==================================================== */
 
 export const personal = {
     name: 'Yonathan Hezron',
-    tagline: 'The Nexus for Network Engineering, Full-Stack Development & Strategic Marketing.',
+    tagline: 'I build networks, craft web applications, and drive digital strategies. Currently an Informatics Engineering student at Telkom University, passionate about bridging the gap between infrastructure and user experience.',
     roles: ['Network Engineer', 'Full-stack Developer', 'Marketing Specialist'],
-    locationBadge: 'SYSTEM ONLINE: JAKARTA NODE-01',
+    locationBadge: 'AVAILABLE FOR OPPORTUNITIES',
     university: 'Telkom University (Expected 2027)',
+    about: `I'm a multidisciplinary tech enthusiast studying Informatics Engineering at Telkom University. My journey spans from configuring enterprise-grade MikroTik networks to building full-stack web applications and running strategic marketing campaigns.\n\nI believe great technology should be invisible — robust infrastructure that just works, interfaces that feel intuitive, and strategies that deliver measurable results. When I'm not coding or routing packets, I'm actively contributing to HMSI and leading marketing initiatives on campus.`,
     languages: [
         { lang: 'Indonesian', level: 'Native' },
         { lang: 'English', level: 'Professional Working Proficiency' },
@@ -18,148 +19,114 @@ export const personal = {
     linkedin: 'https://linkedin.com/in/yonathanhezron',
 };
 
-export const stats = [
-    { value: '10K+', label: 'Transactions' },
-    { value: '99%', label: 'Uptime' },
-    { value: '4.9★', label: 'Rating' },
+export interface SkillCategory {
+    category: string;
+    icon: string;
+    skills: string[];
+}
+
+export const skillCategories: SkillCategory[] = [
+    {
+        category: 'Networking',
+        icon: '🌐',
+        skills: [
+            'MikroTik MTCNA',
+            'MikroTik MTCRE',
+            'OSPF / BGP Routing',
+            'Firewall & NAT',
+            'DHCP & DNS',
+            'Network Monitoring',
+        ],
+    },
+    {
+        category: 'Development',
+        icon: '💻',
+        skills: [
+            'React.js / Next.js',
+            'Node.js / Express',
+            'PHP / Laravel',
+            'PostgreSQL / SQL',
+            'REST APIs',
+            'TypeScript',
+        ],
+    },
+    {
+        category: 'Marketing & Strategy',
+        icon: '📈',
+        skills: [
+            'Social Media Strategy',
+            'Content Creation',
+            'Brand Awareness (B2B)',
+            'Public Speaking',
+            'Data-driven Campaigns',
+            'Community Engagement',
+        ],
+    },
 ];
 
 export interface Project {
     id: string;
     title: string;
+    subtitle: string;
     description: string;
-    category: 'Networking' | 'Dev' | 'Marketing';
     tags: string[];
-    image: string;
-    featured: boolean;
+    images: string[];
     link: string;
+    github?: string;
+    highlights: string[];
 }
 
 export const projects: Project[] = [
     {
         id: 'synapse-ai',
         title: 'Synapse.AI',
-        description: 'Enterprise-grade AI deployment platform with sovereign intelligence capabilities. Built with React, Node.js, and PostgreSQL.',
-        category: 'Dev',
-        tags: ['React.js', 'Node.js', 'PostgreSQL', 'AI'],
-        image: '/screenshots/synapse/01_hero_section.png',
-        featured: true,
+        subtitle: 'Enterprise AI Deployment Platform',
+        description: 'A full-stack enterprise AI deployment dashboard built with sovereign data principles. The platform features infrastructure tier management, interactive demo capabilities, and a comprehensive admin interface for managing AI workloads.',
+        tags: ['React.js', 'Node.js', 'PostgreSQL', 'AI', 'Full-stack'],
+        images: [
+            '/screenshots/synapse/01_hero_section.png',
+            '/screenshots/synapse/02_features_overview.png',
+            '/screenshots/synapse/03_infrastructure_tiers.png',
+            '/screenshots/synapse/04_interactive_demo.png',
+        ],
         link: '#',
+        highlights: [
+            'Sovereign Intelligence dashboard with real-time metrics',
+            'Multi-tier infrastructure management (Smart Entry → Enterprise)',
+            'Interactive demo environment for AI agent prototyping',
+            'Responsive design with dark mode interface',
+        ],
     },
     {
         id: 'gamerzone',
         title: 'GamerZone',
-        description: 'Premium game top-up and digital credits marketplace with secure transactions and real-time activity monitoring.',
-        category: 'Dev',
-        tags: ['React.js', 'PHP', 'SQL', 'Payment API'],
-        image: '/screenshots/gamerzone/2-home.png',
-        featured: true,
-        link: '#',
-    },
-    {
-        id: 'mtcre-network',
-        title: 'MTCRE Network Architecture',
-        description: 'Advanced MikroTik certified routing configuration including OSPF multi-area, BGP peering, and failover strategies.',
-        category: 'Networking',
-        tags: ['MikroTik', 'MTCRE', 'OSPF', 'BGP'],
-        image: '/screenshots/synapse/03_infrastructure_tiers.png',
-        featured: true,
-        link: '#',
-    },
-    {
-        id: 'mtcna-lab',
-        title: 'MTCNA Lab Environment',
-        description: 'Complete MikroTik MTCNA lab setup with firewall rules, DHCP, NAT, and basic QoS implementation for enterprise networks.',
-        category: 'Networking',
-        tags: ['MikroTik', 'MTCNA', 'Firewall', 'NAT'],
-        image: '/screenshots/synapse/02_features_overview.png',
-        featured: false,
-        link: '#',
-    },
-    {
-        id: 'brand-campaign',
-        title: 'B2B Brand Awareness Campaign',
-        description: 'Strategic marketing campaign for Telkom University featuring social media outreach, public speaking events, and measurable ROI.',
-        category: 'Marketing',
-        tags: ['Social Media', 'B2B Strategy', 'Brand Awareness'],
-        image: '/screenshots/gamerzone/4-news.png',
-        featured: false,
-        link: '#',
-    },
-    {
-        id: 'digital-outreach',
-        title: 'Digital Outreach Platform',
-        description: 'Social media management and content strategy system driving engagement metrics and conversion through data-driven campaigns.',
-        category: 'Marketing',
-        tags: ['Content Strategy', 'Analytics', 'Social Media'],
-        image: '/screenshots/gamerzone/6-dashboard.png',
-        featured: false,
-        link: '#',
-    },
-];
-
-export interface Tier {
-    tier: number;
-    title: string;
-    subtitle: string;
-    description: string;
-    skills: string[];
-    cta: string;
-    highlighted: boolean;
-}
-
-export const tiers: Tier[] = [
-    {
-        tier: 1,
-        title: 'Smart Entry Build',
-        subtitle: 'Networking Basics',
-        description: 'Focus on MikroTik routing fundamentals, OSPF configuration, and basic network troubleshooting.',
-        skills: [
-            'MikroTik MTCNA Certification',
-            'OSPF Single-Area Routing',
-            'Firewall & NAT Configuration',
-            'DHCP & DNS Management',
-            'Basic QoS Implementation',
+        subtitle: 'Game Top-up & Digital Marketplace',
+        description: 'A comprehensive e-commerce platform for game credits and digital top-ups. Features secure payment processing, real-time activity monitoring, user dashboards, and a full admin panel for managing transactions and content.',
+        tags: ['React.js', 'PHP', 'SQL', 'Payment API', 'E-commerce'],
+        images: [
+            '/screenshots/gamerzone/1-login.png',
+            '/screenshots/gamerzone/2-home.png',
+            '/screenshots/gamerzone/3-games.png',
+            '/screenshots/gamerzone/4-news.png',
+            '/screenshots/gamerzone/5-topup.png',
+            '/screenshots/gamerzone/6-dashboard.png',
+            '/screenshots/gamerzone/7-success.png',
+            '/screenshots/gamerzone/8-admin.png',
         ],
-        cta: 'View Credentials',
-        highlighted: false,
-    },
-    {
-        tier: 2,
-        title: 'Prosumer Powerhouse',
-        subtitle: 'Advanced Routing & Documentation',
-        description: 'Advanced MikroTik certified routing, BGP peering, RAG Pipeline setups, and comprehensive system documentation.',
-        skills: [
-            'MikroTik MTCRE Certification',
-            'BGP Routing & Peering',
-            'RAG Pipeline Architecture',
-            'System Documentation (B2B)',
-            'Network Performance Monitoring',
+        link: '#',
+        highlights: [
+            'Secure authentication & transaction processing',
+            'Game catalog with category browsing & search',
+            'Real-time top-up flow with success confirmation',
+            'Admin dashboard for content & transaction management',
         ],
-        cta: 'Explore Tier 2',
-        highlighted: true,
-    },
-    {
-        tier: 3,
-        title: 'Enterprise Cluster',
-        subtitle: 'Full-stack & AI Integration',
-        description: 'Full-stack enterprise application development with React/Node.js, database management, and AI agent deployments.',
-        skills: [
-            'React.js / Next.js Frontend',
-            'Node.js / Express Backend',
-            'PostgreSQL & SQL Databases',
-            'REST API Integration',
-            'AI Agent Prototyping',
-        ],
-        cta: 'Consult Project',
-        highlighted: false,
     },
 ];
 
 export interface TimelineEntry {
     id: string;
     date: string;
-    category: 'Patch Notes' | 'Lore & Narrative' | 'Esports';
+    category: 'Education' | 'Certification' | 'Project' | 'Organization';
     title: string;
     description: string;
     org?: string;
@@ -169,7 +136,7 @@ export const timeline: TimelineEntry[] = [
     {
         id: 'tl-1',
         date: '2024 — Present',
-        category: 'Lore & Narrative',
+        category: 'Education',
         title: 'Telkom University — Informatics Engineering',
         description: 'Pursuing a B.Sc in Informatics Engineering with focus on Network Systems and Full-stack Development.',
         org: 'Telkom University',
@@ -177,15 +144,15 @@ export const timeline: TimelineEntry[] = [
     {
         id: 'tl-2',
         date: '2024 — Present',
-        category: 'Esports',
+        category: 'Organization',
         title: 'HMSI — Active Member',
-        description: 'Contributing to Informatics Student Associations activities, organizing tech events and networking workshops.',
+        description: 'Contributing to Informatics Student Association activities, organizing tech events and networking workshops.',
         org: 'HMSI',
     },
     {
         id: 'tl-3',
         date: '2024 — Present',
-        category: 'Esports',
+        category: 'Organization',
         title: 'Marketing Crew — Content Strategist',
         description: 'Driving brand awareness campaigns, social media outreach, and public speaking engagements to grow community engagement.',
         org: 'Marketing Crew Telkom University',
@@ -193,47 +160,29 @@ export const timeline: TimelineEntry[] = [
     {
         id: 'tl-4',
         date: '2024',
-        category: 'Patch Notes',
+        category: 'Certification',
         title: 'MikroTik MTCNA Certified',
         description: 'Successfully passed the MikroTik Certified Network Associate examination. Deployed lab environments for OSPF and firewall.',
     },
     {
         id: 'tl-5',
         date: '2025',
-        category: 'Patch Notes',
-        title: 'Synapse.AI — Full-stack AI Platform',
-        description: 'Designed and built an enterprise AI deployment dashboard with React, Node.js, PostgreSQL, and sovereign data principles.',
+        category: 'Certification',
+        title: 'MikroTik MTCRE Certified',
+        description: 'Advanced routing certification covering BGP, OSPF multi-area, tunnel protocols, and enterprise-grade network architecture.',
     },
     {
         id: 'tl-6',
         date: '2025',
-        category: 'Patch Notes',
-        title: 'GamerZone — E-commerce Marketplace',
-        description: 'Developed a comprehensive game top-up platform with secure payment processing, real-time activity monitoring, and admin dashboards.',
+        category: 'Project',
+        title: 'Synapse.AI — Full-stack AI Platform',
+        description: 'Designed and built an enterprise AI deployment dashboard with React, Node.js, PostgreSQL, and sovereign data principles.',
     },
     {
         id: 'tl-7',
         date: '2025',
-        category: 'Patch Notes',
-        title: 'MikroTik MTCRE Certification',
-        description: 'Advanced routing certification covering BGP, OSPF multi-area, tunnel protocols, and enterprise-grade network architecture.',
-    },
-];
-
-export const trustSignals = [
-    {
-        icon: '⚡',
-        title: 'Instant Delivery',
-        description: 'Projects delivered with rapid iteration cycles and clean handoffs.',
-    },
-    {
-        icon: '🔒',
-        title: 'Verified Secure',
-        description: '256-bit SSL encryption standards. Firewall security protocols applied to all deployments.',
-    },
-    {
-        icon: '🌐',
-        title: 'Bilingual Support',
-        description: 'Indonesian (Native) & English (Professional Working Proficiency). Ready for global collaboration.',
+        category: 'Project',
+        title: 'GamerZone — E-commerce Marketplace',
+        description: 'Developed a comprehensive game top-up platform with secure payment processing, real-time activity monitoring, and admin dashboards.',
     },
 ];

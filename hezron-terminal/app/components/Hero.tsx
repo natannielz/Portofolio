@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { personal, stats } from '../data/siteData';
+import { personal } from '../data/siteData';
 
 export default function Hero() {
     const [roleIndex, setRoleIndex] = useState(0);
@@ -66,7 +66,7 @@ export default function Hero() {
                 style={{
                     position: 'absolute',
                     top: '35%',
-                    right: '35%',
+                    left: '10%',
                     width: '30px',
                     height: '30px',
                     border: '1px solid var(--accent-purple)',
@@ -93,6 +93,21 @@ export default function Hero() {
                     <span className="dot" />
                     {personal.locationBadge}
                 </motion.div>
+
+                {/* Greeting */}
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 3.1, duration: 0.6 }}
+                    style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '16px',
+                        color: 'var(--text-secondary)',
+                        marginBottom: '8px',
+                    }}
+                >
+                    Hi, I&apos;m
+                </motion.p>
 
                 {/* Main headline */}
                 <motion.div
@@ -162,7 +177,7 @@ export default function Hero() {
                     style={{
                         fontSize: 'clamp(14px, 1.8vw, 17px)',
                         color: 'var(--text-secondary)',
-                        maxWidth: '560px',
+                        maxWidth: '600px',
                         lineHeight: 1.7,
                         marginBottom: '36px',
                     }}
@@ -179,53 +194,64 @@ export default function Hero() {
                 >
                     <button
                         className="btn btn-primary"
-                        onClick={() => document.getElementById('arsenal')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                     >
-                        ⚡ Jalankan Demo
+                        🔍 View My Work
                     </button>
                     <button
                         className="btn btn-secondary"
-                        onClick={() => document.getElementById('infrastructure')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={() => {
+                            window.location.href = `mailto:${personal.email}`;
+                        }}
                     >
-                        ⚙ Lihat Infrastruktur
+                        ✉ Contact Me
                     </button>
                 </motion.div>
 
-                {/* Stats row */}
+                {/* Social links */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 4.2, duration: 0.6 }}
                     style={{
                         display: 'flex',
-                        gap: '48px',
-                        marginTop: '60px',
-                        flexWrap: 'wrap',
-                        justifyContent: 'center',
+                        gap: '20px',
+                        marginTop: '48px',
                     }}
                 >
-                    {stats.map((stat, i) => (
-                        <div key={i} style={{ textAlign: 'center' }}>
-                            <div style={{
-                                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-                                fontWeight: 800,
-                                color: i === 2 ? 'var(--accent-green)' : 'var(--text-primary)',
-                                fontFamily: 'var(--font-mono)',
-                            }}>
-                                {stat.value}
-                            </div>
-                            <div style={{
-                                fontSize: '11px',
-                                letterSpacing: '2px',
-                                textTransform: 'uppercase',
-                                color: 'var(--text-muted)',
-                                fontFamily: 'var(--font-mono)',
-                                marginTop: '4px',
-                            }}>
-                                {stat.label}
-                            </div>
-                        </div>
-                    ))}
+                    <a
+                        href={personal.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '13px',
+                            color: 'var(--text-muted)',
+                            letterSpacing: '1px',
+                            transition: 'color 0.2s',
+                        }}
+                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-cyan)')}
+                        onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
+                    >
+                        GitHub ↗
+                    </a>
+                    <span style={{ color: 'var(--text-muted)', opacity: 0.3 }}>|</span>
+                    <a
+                        href={personal.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '13px',
+                            color: 'var(--text-muted)',
+                            letterSpacing: '1px',
+                            transition: 'color 0.2s',
+                        }}
+                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-cyan)')}
+                        onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
+                    >
+                        LinkedIn ↗
+                    </a>
                 </motion.div>
             </div>
         </section>
